@@ -1,0 +1,15 @@
+{
+  "name": "openkairos",
+  "version": "0.1.1",
+  "description": "Kairos — a secure, provider-agnostic terminal coding agent with a beautiful TUI. 50+ providers, bring your own key, zero telemetry, zero runtime dependencies.",
+  "type": "module",
+  "bin": { "kairos": "./bin/kairos.js", "openkairos": "./bin/kairos.js" },
+  "engines": { "node": ">=18" },
+  "files": ["bin", "src", "README.md"],
+  "keywords": ["ai", "cli", "tui", "coding-agent", "openai", "anthropic", "gemini", "security"],
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/adamyasingh-05/kairos.git" },
+  "homepage": "https://github.com/adamyasingh-05/kairos#readme",
+  "bugs": { "url": "https://github.com/adamyasingh-05/kairos/issues" },
+  "dependencies": {}
+}

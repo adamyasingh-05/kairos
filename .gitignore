@@ -1,0 +1,12 @@
+node_modules/
+*.tgz
+*.log
+.DS_Store
+.env
+.env.*
+
+# Kairos local state (never commit real vault/session data)
+.kairos/
+sessions/
+*.enc
+machine.key

@@ -1,0 +1,81 @@
+// Kairos provider registry — 50+ model providers.
+// kind: "openai" (chat-completions compatible) | "anthropic" | "gemini"
+// env:  optional environment variable Kairos will read as a fallback to the keystore.
+
+const p = (id, name, kind, baseUrl, models, env, keyUrl) => ({
+  id,
+  name,
+  kind,
+  baseUrl,
+  models,
+  env,
+  keyUrl,
+});
+
+export const PROVIDERS = [
+  p("openai", "OpenAI", "openai", "https://api.openai.com/v1", ["gpt-5.2", "gpt-5-mini", "gpt-4.1"], "OPENAI_API_KEY", "https://platform.openai.com/api-keys"),
+  p("anthropic", "Anthropic", "anthropic", "https://api.anthropic.com/v1", ["claude-sonnet-4-5", "claude-opus-4-1", "claude-haiku-4-5"], "ANTHROPIC_API_KEY", "https://console.anthropic.com/settings/keys"),
+  p("gemini", "Google Gemini", "gemini", "https://generativelanguage.googleapis.com/v1beta", ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.5-flash-lite"], "GEMINI_API_KEY", "https://aistudio.google.com/apikey"),
+  p("xai", "xAI Grok", "openai", "https://api.x.ai/v1", ["grok-4", "grok-3-mini"], "XAI_API_KEY", "https://console.x.ai"),
+  p("groq", "Groq", "openai", "https://api.groq.com/openai/v1", ["llama-3.3-70b-versatile", "qwen-2.5-coder-32b"], "GROQ_API_KEY", "https://console.groq.com/keys"),
+  p("mistral", "Mistral AI", "openai", "https://api.mistral.ai/v1", ["mistral-large-latest", "codestral-latest"], "MISTRAL_API_KEY", "https://console.mistral.ai/api-keys"),
+  p("deepseek", "DeepSeek", "openai", "https://api.deepseek.com/v1", ["deepseek-chat", "deepseek-reasoner"], "DEEPSEEK_API_KEY", "https://platform.deepseek.com/api_keys"),
+  p("openrouter", "OpenRouter", "openai", "https://openrouter.ai/api/v1", ["anthropic/claude-sonnet-4.5", "openai/gpt-5.2", "google/gemini-2.5-pro"], "OPENROUTER_API_KEY", "https://openrouter.ai/keys"),
+  p("together", "Together AI", "openai", "https://api.together.xyz/v1", ["Qwen/Qwen2.5-Coder-32B-Instruct"], "TOGETHER_API_KEY", "https://api.together.ai/settings/api-keys"),
+  p("fireworks", "Fireworks AI", "openai", "https://api.fireworks.ai/inference/v1", ["accounts/fireworks/models/deepseek-v3"], "FIREWORKS_API_KEY", "https://fireworks.ai/account/api-keys"),
+  p("perplexity", "Perplexity", "openai", "https://api.perplexity.ai", ["sonar-pro", "sonar-reasoning"], "PERPLEXITY_API_KEY", "https://www.perplexity.ai/settings/api"),
+  p("cohere", "Cohere", "openai", "https://api.cohere.ai/compatibility/v1", ["command-a-03-2025", "command-r-plus"], "COHERE_API_KEY", "https://dashboard.cohere.com/api-keys"),
+  p("cerebras", "Cerebras", "openai", "https://api.cerebras.ai/v1", ["llama-3.3-70b", "qwen-3-coder-480b"], "CEREBRAS_API_KEY", "https://cloud.cerebras.ai"),
+  p("sambanova", "SambaNova", "openai", "https://api.sambanova.ai/v1", ["Meta-Llama-3.3-70B-Instruct"], "SAMBANOVA_API_KEY", "https://cloud.sambanova.ai/apis"),
+  p("deepinfra", "DeepInfra", "openai", "https://api.deepinfra.com/v1/openai", ["Qwen/Qwen2.5-Coder-32B-Instruct"], "DEEPINFRA_API_KEY", "https://deepinfra.com/dash/api_keys"),
+  p("hyperbolic", "Hyperbolic", "openai", "https://api.hyperbolic.xyz/v1", ["deepseek-ai/DeepSeek-V3"], "HYPERBOLIC_API_KEY", "https://app.hyperbolic.xyz/settings"),
+  p("novita", "Novita AI", "openai", "https://api.novita.ai/v3/openai", ["deepseek/deepseek-v3"], "NOVITA_API_KEY", "https://novita.ai/settings/key-management"),
+  p("nebius", "Nebius AI Studio", "openai", "https://api.studio.nebius.ai/v1", ["Qwen/Qwen2.5-Coder-32B-Instruct"], "NEBIUS_API_KEY", "https://studio.nebius.ai"),
+  p("lambda", "Lambda Labs", "openai", "https://api.lambdalabs.com/v1", ["deepseek-v3"], "LAMBDA_API_KEY", "https://cloud.lambdalabs.com/api-keys"),
+  p("anyscale", "Anyscale", "openai", "https://api.endpoints.anyscale.com/v1", ["meta-llama/Llama-3-70b-chat-hf"], "ANYSCALE_API_KEY", "https://console.anyscale.com"),
+  p("octoai", "OctoAI", "openai", "https://text.octoai.run/v1", ["meta-llama-3.1-70b-instruct"], "OCTOAI_API_KEY", "https://octoai.cloud"),
+  p("moonshot", "Moonshot / Kimi", "openai", "https://api.moonshot.ai/v1", ["kimi-k2-0905-preview", "moonshot-v1-128k"], "MOONSHOT_API_KEY", "https://platform.moonshot.ai/console/api-keys"),
+  p("zhipu", "Zhipu GLM", "openai", "https://open.bigmodel.cn/api/paas/v4", ["glm-4.6", "glm-4-plus"], "ZHIPU_API_KEY", "https://open.bigmodel.cn"),
+  p("qwen", "Alibaba Qwen (DashScope)", "openai", "https://dashscope-intl.aliyuncs.com/compatible-mode/v1", ["qwen3-coder-plus", "qwen-max"], "DASHSCOPE_API_KEY", "https://dashscope.console.aliyun.com"),
+  p("minimax", "MiniMax", "openai", "https://api.minimax.chat/v1", ["abab6.5s-chat"], "MINIMAX_API_KEY", "https://platform.minimaxi.com"),
+  p("baichuan", "Baichuan", "openai", "https://api.baichuan-ai.com/v1", ["Baichuan4"], "BAICHUAN_API_KEY", "https://platform.baichuan-ai.com"),
+  p("stepfun", "StepFun", "openai", "https://api.stepfun.com/v1", ["step-2-16k"], "STEPFUN_API_KEY", "https://platform.stepfun.com"),
+  p("yi", "01.AI Yi", "openai", "https://api.lingyiwanwu.com/v1", ["yi-large"], "YI_API_KEY", "https://platform.lingyiwanwu.com"),
+  p("siliconflow", "SiliconFlow", "openai", "https://api.siliconflow.cn/v1", ["deepseek-ai/DeepSeek-V3"], "SILICONFLOW_API_KEY", "https://cloud.siliconflow.cn/account/ak"),
+  p("infermatic", "Infermatic", "openai", "https://api.totalgpt.ai/v1", ["Llama-3.3-70B-Instruct"], "INFERMATIC_API_KEY", "https://infermatic.ai"),
+  p("azure", "Azure OpenAI", "openai", "https://YOUR-RESOURCE.openai.azure.com/openai/v1", ["gpt-4.1", "gpt-5"], "AZURE_OPENAI_API_KEY", "https://portal.azure.com"),
+  p("bedrock", "AWS Bedrock (gateway)", "openai", "https://bedrock-runtime.us-east-1.amazonaws.com/openai/v1", ["anthropic.claude-sonnet-4-5"], "AWS_BEARER_TOKEN_BEDROCK", "https://console.aws.amazon.com/bedrock"),
+  p("vertex", "Google Vertex AI", "openai", "https://us-central1-aiplatform.googleapis.com/v1/openapi", ["google/gemini-2.5-pro"], "VERTEX_API_KEY", "https://console.cloud.google.com/vertex-ai"),
+  p("githubmodels", "GitHub Models", "openai", "https://models.inference.ai.azure.com", ["gpt-4o", "Phi-4"], "GITHUB_TOKEN", "https://github.com/settings/tokens"),
+  p("cloudflare", "Cloudflare Workers AI", "openai", "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/ai/v1", ["@cf/meta/llama-3.3-70b-instruct-fp8-fast"], "CLOUDFLARE_API_TOKEN", "https://dash.cloudflare.com/profile/api-tokens"),
+  p("vercel", "Vercel AI Gateway", "openai", "https://ai-gateway.vercel.sh/v1", ["anthropic/claude-sonnet-4.5"], "AI_GATEWAY_API_KEY", "https://vercel.com/dashboard/ai-gateway"),
+  p("lovable", "Lovable AI Gateway", "openai", "https://ai.gateway.lovable.dev/v1", ["google/gemini-3.6-flash", "openai/gpt-5.2"], "LOVABLE_API_KEY", "https://lovable.dev"),
+  p("requesty", "Requesty", "openai", "https://router.requesty.ai/v1", ["openai/gpt-4.1"], "REQUESTY_API_KEY", "https://app.requesty.ai"),
+  p("unify", "Unify AI", "openai", "https://api.unify.ai/v0", ["gpt-4o@openai"], "UNIFY_API_KEY", "https://console.unify.ai"),
+  p("portkey", "Portkey", "openai", "https://api.portkey.ai/v1", ["gpt-4o"], "PORTKEY_API_KEY", "https://app.portkey.ai"),
+  p("litellm", "LiteLLM Proxy", "openai", "http://localhost:4000/v1", ["gpt-4o"], "LITELLM_API_KEY", "https://docs.litellm.ai"),
+  p("helicone", "Helicone Gateway", "openai", "https://oai.helicone.ai/v1", ["gpt-4o"], "HELICONE_API_KEY", "https://helicone.ai"),
+  p("ollama", "Ollama (local)", "openai", "http://localhost:11434/v1", ["qwen2.5-coder:14b", "llama3.3"], "OLLAMA_API_KEY", "https://ollama.com"),
+  p("lmstudio", "LM Studio (local)", "openai", "http://localhost:1234/v1", ["local-model"], "LMSTUDIO_API_KEY", "https://lmstudio.ai"),
+  p("llamacpp", "llama.cpp server (local)", "openai", "http://localhost:8080/v1", ["local-model"], "LLAMACPP_API_KEY", "https://github.com/ggml-org/llama.cpp"),
+  p("vllm", "vLLM (self-hosted)", "openai", "http://localhost:8000/v1", ["local-model"], "VLLM_API_KEY", "https://docs.vllm.ai"),
+  p("jan", "Jan (local)", "openai", "http://localhost:1337/v1", ["local-model"], "JAN_API_KEY", "https://jan.ai"),
+  p("nvidia", "NVIDIA NIM", "openai", "https://integrate.api.nvidia.com/v1", ["deepseek-ai/deepseek-r1"], "NVIDIA_API_KEY", "https://build.nvidia.com"),
+  p("ai21", "AI21 Labs", "openai", "https://api.ai21.com/studio/v1", ["jamba-1.5-large"], "AI21_API_KEY", "https://studio.ai21.com"),
+  p("writer", "Writer Palmyra", "openai", "https://api.writer.com/v1", ["palmyra-x5"], "WRITER_API_KEY", "https://app.writer.com"),
+  p("upstage", "Upstage Solar", "openai", "https://api.upstage.ai/v1/solar", ["solar-pro2"], "UPSTAGE_API_KEY", "https://console.upstage.ai"),
+  p("reka", "Reka AI", "openai", "https://api.reka.ai/v1", ["reka-core"], "REKA_API_KEY", "https://platform.reka.ai"),
+  p("friendli", "FriendliAI", "openai", "https://api.friendli.ai/serverless/v1", ["meta-llama-3.3-70b-instruct"], "FRIENDLI_TOKEN", "https://suite.friendli.ai"),
+  p("baseten", "Baseten", "openai", "https://inference.baseten.co/v1", ["deepseek-ai/DeepSeek-V3"], "BASETEN_API_KEY", "https://app.baseten.co/settings/api-keys"),
+  p("clarifai", "Clarifai", "openai", "https://api.clarifai.com/v2/ext/openai/v1", ["gpt-4o"], "CLARIFAI_PAT", "https://clarifai.com/settings/security"),
+  p("featherless", "Featherless AI", "openai", "https://api.featherless.ai/v1", ["Qwen/Qwen2.5-72B-Instruct"], "FEATHERLESS_API_KEY", "https://featherless.ai"),
+  p("kluster", "Kluster.ai", "openai", "https://api.kluster.ai/v1", ["deepseek-ai/DeepSeek-V3"], "KLUSTER_API_KEY", "https://platform.kluster.ai"),
+  p("chutes", "Chutes AI", "openai", "https://llm.chutes.ai/v1", ["deepseek-ai/DeepSeek-V3"], "CHUTES_API_KEY", "https://chutes.ai"),
+  p("atoma", "Atoma Network", "openai", "https://api.atoma.network/v1", ["deepseek-ai/DeepSeek-V3"], "ATOMA_API_KEY", "https://atoma.network"),
+];
+
+export const byId = (id) => PROVIDERS.find((x) => x.id === id);
+export const search = (q) => {
+  const s = q.toLowerCase();
+  return PROVIDERS.filter((x) => x.id.includes(s) || x.name.toLowerCase().includes(s));
+};
